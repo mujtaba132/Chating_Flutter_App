@@ -1,0 +1,34 @@
+import 'package:chat_app/features/chat/data/modal/message_model/message_model.dart';
+import 'package:chat_app/features/chat/presentation/bloc/chat_bloc/chat_bloc.dart';
+import 'package:chat_app/features/chat/presentation/widgets/message/message.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class ChatListBuilder extends StatelessWidget {
+ const ChatListBuilder({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ChatBloc, ChatState>(
+      buildWhen: (previous, current) => previous.chatMessages!=current.chatMessages,
+      builder: (context, state) {
+        if(state.chatMessages.isEmpty){
+           return Expanded(child: SizedBox());
+        }
+        return Expanded(
+          child: ListView.builder(
+            itemCount: state.chatMessages.length,
+            itemBuilder: (context, index) {
+              ChatMessage message = state.chatMessages[index];
+              return 
+              chatMessageItem(
+                context, 
+                message
+                );
+            },
+          ),
+        );
+      },
+    );
+  }
+}
