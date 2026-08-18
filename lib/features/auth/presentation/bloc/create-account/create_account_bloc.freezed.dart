@@ -55,14 +55,14 @@ extension CreateAccountEventPatterns on CreateAccountEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( CreateAccountStarted value)?  started,TResult Function( PickProfileImage value)?  pickProfileImage,TResult Function( SetFullName value)?  setFullName,TResult Function( SetMobileNumber value)?  setMobileNumber,TResult Function( SetPassword value)?  setPassword,TResult Function( SetConfirmPassword value)?  setConfirmPassword,TResult Function( TogglePasswordVisibility value)?  togglePasswordVisibility,TResult Function( ToggleConfirmPasswordVisibility value)?  toggleConfirmPasswordVisibility,TResult Function( CreateAccount value)?  createAccount,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( CreateAccountStarted value)?  started,TResult Function( PickProfileImage value)?  pickProfileImage,TResult Function( SetFullName value)?  setFullName,TResult Function( SetEmail value)?  setEmail,TResult Function( SetPassword value)?  setPassword,TResult Function( SetConfirmPassword value)?  setConfirmPassword,TResult Function( TogglePasswordVisibility value)?  togglePasswordVisibility,TResult Function( ToggleConfirmPasswordVisibility value)?  toggleConfirmPasswordVisibility,TResult Function( CreateAccount value)?  createAccount,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case CreateAccountStarted() when started != null:
 return started(_that);case PickProfileImage() when pickProfileImage != null:
 return pickProfileImage(_that);case SetFullName() when setFullName != null:
-return setFullName(_that);case SetMobileNumber() when setMobileNumber != null:
-return setMobileNumber(_that);case SetPassword() when setPassword != null:
+return setFullName(_that);case SetEmail() when setEmail != null:
+return setEmail(_that);case SetPassword() when setPassword != null:
 return setPassword(_that);case SetConfirmPassword() when setConfirmPassword != null:
 return setConfirmPassword(_that);case TogglePasswordVisibility() when togglePasswordVisibility != null:
 return togglePasswordVisibility(_that);case ToggleConfirmPasswordVisibility() when toggleConfirmPasswordVisibility != null:
@@ -85,14 +85,14 @@ return createAccount(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( CreateAccountStarted value)  started,required TResult Function( PickProfileImage value)  pickProfileImage,required TResult Function( SetFullName value)  setFullName,required TResult Function( SetMobileNumber value)  setMobileNumber,required TResult Function( SetPassword value)  setPassword,required TResult Function( SetConfirmPassword value)  setConfirmPassword,required TResult Function( TogglePasswordVisibility value)  togglePasswordVisibility,required TResult Function( ToggleConfirmPasswordVisibility value)  toggleConfirmPasswordVisibility,required TResult Function( CreateAccount value)  createAccount,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( CreateAccountStarted value)  started,required TResult Function( PickProfileImage value)  pickProfileImage,required TResult Function( SetFullName value)  setFullName,required TResult Function( SetEmail value)  setEmail,required TResult Function( SetPassword value)  setPassword,required TResult Function( SetConfirmPassword value)  setConfirmPassword,required TResult Function( TogglePasswordVisibility value)  togglePasswordVisibility,required TResult Function( ToggleConfirmPasswordVisibility value)  toggleConfirmPasswordVisibility,required TResult Function( CreateAccount value)  createAccount,}){
 final _that = this;
 switch (_that) {
 case CreateAccountStarted():
 return started(_that);case PickProfileImage():
 return pickProfileImage(_that);case SetFullName():
-return setFullName(_that);case SetMobileNumber():
-return setMobileNumber(_that);case SetPassword():
+return setFullName(_that);case SetEmail():
+return setEmail(_that);case SetPassword():
 return setPassword(_that);case SetConfirmPassword():
 return setConfirmPassword(_that);case TogglePasswordVisibility():
 return togglePasswordVisibility(_that);case ToggleConfirmPasswordVisibility():
@@ -114,14 +114,14 @@ return createAccount(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( CreateAccountStarted value)?  started,TResult? Function( PickProfileImage value)?  pickProfileImage,TResult? Function( SetFullName value)?  setFullName,TResult? Function( SetMobileNumber value)?  setMobileNumber,TResult? Function( SetPassword value)?  setPassword,TResult? Function( SetConfirmPassword value)?  setConfirmPassword,TResult? Function( TogglePasswordVisibility value)?  togglePasswordVisibility,TResult? Function( ToggleConfirmPasswordVisibility value)?  toggleConfirmPasswordVisibility,TResult? Function( CreateAccount value)?  createAccount,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( CreateAccountStarted value)?  started,TResult? Function( PickProfileImage value)?  pickProfileImage,TResult? Function( SetFullName value)?  setFullName,TResult? Function( SetEmail value)?  setEmail,TResult? Function( SetPassword value)?  setPassword,TResult? Function( SetConfirmPassword value)?  setConfirmPassword,TResult? Function( TogglePasswordVisibility value)?  togglePasswordVisibility,TResult? Function( ToggleConfirmPasswordVisibility value)?  toggleConfirmPasswordVisibility,TResult? Function( CreateAccount value)?  createAccount,}){
 final _that = this;
 switch (_that) {
 case CreateAccountStarted() when started != null:
 return started(_that);case PickProfileImage() when pickProfileImage != null:
 return pickProfileImage(_that);case SetFullName() when setFullName != null:
-return setFullName(_that);case SetMobileNumber() when setMobileNumber != null:
-return setMobileNumber(_that);case SetPassword() when setPassword != null:
+return setFullName(_that);case SetEmail() when setEmail != null:
+return setEmail(_that);case SetPassword() when setPassword != null:
 return setPassword(_that);case SetConfirmPassword() when setConfirmPassword != null:
 return setConfirmPassword(_that);case TogglePasswordVisibility() when togglePasswordVisibility != null:
 return togglePasswordVisibility(_that);case ToggleConfirmPasswordVisibility() when toggleConfirmPasswordVisibility != null:
@@ -143,13 +143,13 @@ return createAccount(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function()?  pickProfileImage,TResult Function( String fullName)?  setFullName,TResult Function( String mobileNumber)?  setMobileNumber,TResult Function( String password)?  setPassword,TResult Function( String confirmPassword)?  setConfirmPassword,TResult Function()?  togglePasswordVisibility,TResult Function()?  toggleConfirmPasswordVisibility,TResult Function()?  createAccount,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function()?  pickProfileImage,TResult Function( String fullName)?  setFullName,TResult Function( String email)?  setEmail,TResult Function( String password)?  setPassword,TResult Function( String confirmPassword)?  setConfirmPassword,TResult Function()?  togglePasswordVisibility,TResult Function()?  toggleConfirmPasswordVisibility,TResult Function()?  createAccount,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case CreateAccountStarted() when started != null:
 return started();case PickProfileImage() when pickProfileImage != null:
 return pickProfileImage();case SetFullName() when setFullName != null:
-return setFullName(_that.fullName);case SetMobileNumber() when setMobileNumber != null:
-return setMobileNumber(_that.mobileNumber);case SetPassword() when setPassword != null:
+return setFullName(_that.fullName);case SetEmail() when setEmail != null:
+return setEmail(_that.email);case SetPassword() when setPassword != null:
 return setPassword(_that.password);case SetConfirmPassword() when setConfirmPassword != null:
 return setConfirmPassword(_that.confirmPassword);case TogglePasswordVisibility() when togglePasswordVisibility != null:
 return togglePasswordVisibility();case ToggleConfirmPasswordVisibility() when toggleConfirmPasswordVisibility != null:
@@ -172,13 +172,13 @@ return createAccount();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function()  pickProfileImage,required TResult Function( String fullName)  setFullName,required TResult Function( String mobileNumber)  setMobileNumber,required TResult Function( String password)  setPassword,required TResult Function( String confirmPassword)  setConfirmPassword,required TResult Function()  togglePasswordVisibility,required TResult Function()  toggleConfirmPasswordVisibility,required TResult Function()  createAccount,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function()  pickProfileImage,required TResult Function( String fullName)  setFullName,required TResult Function( String email)  setEmail,required TResult Function( String password)  setPassword,required TResult Function( String confirmPassword)  setConfirmPassword,required TResult Function()  togglePasswordVisibility,required TResult Function()  toggleConfirmPasswordVisibility,required TResult Function()  createAccount,}) {final _that = this;
 switch (_that) {
 case CreateAccountStarted():
 return started();case PickProfileImage():
 return pickProfileImage();case SetFullName():
-return setFullName(_that.fullName);case SetMobileNumber():
-return setMobileNumber(_that.mobileNumber);case SetPassword():
+return setFullName(_that.fullName);case SetEmail():
+return setEmail(_that.email);case SetPassword():
 return setPassword(_that.password);case SetConfirmPassword():
 return setConfirmPassword(_that.confirmPassword);case TogglePasswordVisibility():
 return togglePasswordVisibility();case ToggleConfirmPasswordVisibility():
@@ -200,13 +200,13 @@ return createAccount();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function()?  pickProfileImage,TResult? Function( String fullName)?  setFullName,TResult? Function( String mobileNumber)?  setMobileNumber,TResult? Function( String password)?  setPassword,TResult? Function( String confirmPassword)?  setConfirmPassword,TResult? Function()?  togglePasswordVisibility,TResult? Function()?  toggleConfirmPasswordVisibility,TResult? Function()?  createAccount,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function()?  pickProfileImage,TResult? Function( String fullName)?  setFullName,TResult? Function( String email)?  setEmail,TResult? Function( String password)?  setPassword,TResult? Function( String confirmPassword)?  setConfirmPassword,TResult? Function()?  togglePasswordVisibility,TResult? Function()?  toggleConfirmPasswordVisibility,TResult? Function()?  createAccount,}) {final _that = this;
 switch (_that) {
 case CreateAccountStarted() when started != null:
 return started();case PickProfileImage() when pickProfileImage != null:
 return pickProfileImage();case SetFullName() when setFullName != null:
-return setFullName(_that.fullName);case SetMobileNumber() when setMobileNumber != null:
-return setMobileNumber(_that.mobileNumber);case SetPassword() when setPassword != null:
+return setFullName(_that.fullName);case SetEmail() when setEmail != null:
+return setEmail(_that.email);case SetPassword() when setPassword != null:
 return setPassword(_that.password);case SetConfirmPassword() when setConfirmPassword != null:
 return setConfirmPassword(_that.confirmPassword);case TogglePasswordVisibility() when togglePasswordVisibility != null:
 return togglePasswordVisibility();case ToggleConfirmPasswordVisibility() when toggleConfirmPasswordVisibility != null:
@@ -352,43 +352,43 @@ as String,
 /// @nodoc
 
 
-class SetMobileNumber implements CreateAccountEvent {
-  const SetMobileNumber({required this.mobileNumber});
+class SetEmail implements CreateAccountEvent {
+  const SetEmail({required this.email});
   
 
- final  String mobileNumber;
+ final  String email;
 
 /// Create a copy of CreateAccountEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$SetMobileNumberCopyWith<SetMobileNumber> get copyWith => _$SetMobileNumberCopyWithImpl<SetMobileNumber>(this, _$identity);
+$SetEmailCopyWith<SetEmail> get copyWith => _$SetEmailCopyWithImpl<SetEmail>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SetMobileNumber&&(identical(other.mobileNumber, mobileNumber) || other.mobileNumber == mobileNumber));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SetEmail&&(identical(other.email, email) || other.email == email));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,mobileNumber);
+int get hashCode => Object.hash(runtimeType,email);
 
 @override
 String toString() {
-  return 'CreateAccountEvent.setMobileNumber(mobileNumber: $mobileNumber)';
+  return 'CreateAccountEvent.setEmail(email: $email)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $SetMobileNumberCopyWith<$Res> implements $CreateAccountEventCopyWith<$Res> {
-  factory $SetMobileNumberCopyWith(SetMobileNumber value, $Res Function(SetMobileNumber) _then) = _$SetMobileNumberCopyWithImpl;
+abstract mixin class $SetEmailCopyWith<$Res> implements $CreateAccountEventCopyWith<$Res> {
+  factory $SetEmailCopyWith(SetEmail value, $Res Function(SetEmail) _then) = _$SetEmailCopyWithImpl;
 @useResult
 $Res call({
- String mobileNumber
+ String email
 });
 
 
@@ -396,18 +396,18 @@ $Res call({
 
 }
 /// @nodoc
-class _$SetMobileNumberCopyWithImpl<$Res>
-    implements $SetMobileNumberCopyWith<$Res> {
-  _$SetMobileNumberCopyWithImpl(this._self, this._then);
+class _$SetEmailCopyWithImpl<$Res>
+    implements $SetEmailCopyWith<$Res> {
+  _$SetEmailCopyWithImpl(this._self, this._then);
 
-  final SetMobileNumber _self;
-  final $Res Function(SetMobileNumber) _then;
+  final SetEmail _self;
+  final $Res Function(SetEmail) _then;
 
 /// Create a copy of CreateAccountEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? mobileNumber = null,}) {
-  return _then(SetMobileNumber(
-mobileNumber: null == mobileNumber ? _self.mobileNumber : mobileNumber // ignore: cast_nullable_to_non_nullable
+@pragma('vm:prefer-inline') $Res call({Object? email = null,}) {
+  return _then(SetEmail(
+email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -646,7 +646,7 @@ String toString() {
 /// @nodoc
 mixin _$CreateAccountState {
 
- String get fullName; String get mobileNumber; String get password; String get confirmPassword; String? get profileImage; bool get isPasswordObscured; bool get isConfirmPasswordObscured; ExceptionStatus get status; String? get errorMessage;
+ String get fullName; String get email; String get password; String get confirmPassword; String? get profileImage; ExceptionStatus get imageUploadStatus; bool get isPasswordObscured; bool get isConfirmPasswordObscured; ExceptionStatus get formStatus; String? get errorMessage;
 /// Create a copy of CreateAccountState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -657,16 +657,16 @@ $CreateAccountStateCopyWith<CreateAccountState> get copyWith => _$CreateAccountS
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateAccountState&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.mobileNumber, mobileNumber) || other.mobileNumber == mobileNumber)&&(identical(other.password, password) || other.password == password)&&(identical(other.confirmPassword, confirmPassword) || other.confirmPassword == confirmPassword)&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.isPasswordObscured, isPasswordObscured) || other.isPasswordObscured == isPasswordObscured)&&(identical(other.isConfirmPasswordObscured, isConfirmPasswordObscured) || other.isConfirmPasswordObscured == isConfirmPasswordObscured)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateAccountState&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.confirmPassword, confirmPassword) || other.confirmPassword == confirmPassword)&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.imageUploadStatus, imageUploadStatus) || other.imageUploadStatus == imageUploadStatus)&&(identical(other.isPasswordObscured, isPasswordObscured) || other.isPasswordObscured == isPasswordObscured)&&(identical(other.isConfirmPasswordObscured, isConfirmPasswordObscured) || other.isConfirmPasswordObscured == isConfirmPasswordObscured)&&(identical(other.formStatus, formStatus) || other.formStatus == formStatus)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,fullName,mobileNumber,password,confirmPassword,profileImage,isPasswordObscured,isConfirmPasswordObscured,status,errorMessage);
+int get hashCode => Object.hash(runtimeType,fullName,email,password,confirmPassword,profileImage,imageUploadStatus,isPasswordObscured,isConfirmPasswordObscured,formStatus,errorMessage);
 
 @override
 String toString() {
-  return 'CreateAccountState(fullName: $fullName, mobileNumber: $mobileNumber, password: $password, confirmPassword: $confirmPassword, profileImage: $profileImage, isPasswordObscured: $isPasswordObscured, isConfirmPasswordObscured: $isConfirmPasswordObscured, status: $status, errorMessage: $errorMessage)';
+  return 'CreateAccountState(fullName: $fullName, email: $email, password: $password, confirmPassword: $confirmPassword, profileImage: $profileImage, imageUploadStatus: $imageUploadStatus, isPasswordObscured: $isPasswordObscured, isConfirmPasswordObscured: $isConfirmPasswordObscured, formStatus: $formStatus, errorMessage: $errorMessage)';
 }
 
 
@@ -677,7 +677,7 @@ abstract mixin class $CreateAccountStateCopyWith<$Res>  {
   factory $CreateAccountStateCopyWith(CreateAccountState value, $Res Function(CreateAccountState) _then) = _$CreateAccountStateCopyWithImpl;
 @useResult
 $Res call({
- String fullName, String mobileNumber, String password, String confirmPassword, String? profileImage, bool isPasswordObscured, bool isConfirmPasswordObscured, ExceptionStatus status, String? errorMessage
+ String fullName, String email, String password, String confirmPassword, String? profileImage, ExceptionStatus imageUploadStatus, bool isPasswordObscured, bool isConfirmPasswordObscured, ExceptionStatus formStatus, String? errorMessage
 });
 
 
@@ -694,16 +694,17 @@ class _$CreateAccountStateCopyWithImpl<$Res>
 
 /// Create a copy of CreateAccountState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? fullName = null,Object? mobileNumber = null,Object? password = null,Object? confirmPassword = null,Object? profileImage = freezed,Object? isPasswordObscured = null,Object? isConfirmPasswordObscured = null,Object? status = null,Object? errorMessage = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? fullName = null,Object? email = null,Object? password = null,Object? confirmPassword = null,Object? profileImage = freezed,Object? imageUploadStatus = null,Object? isPasswordObscured = null,Object? isConfirmPasswordObscured = null,Object? formStatus = null,Object? errorMessage = freezed,}) {
   return _then(_self.copyWith(
 fullName: null == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
-as String,mobileNumber: null == mobileNumber ? _self.mobileNumber : mobileNumber // ignore: cast_nullable_to_non_nullable
+as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
 as String,confirmPassword: null == confirmPassword ? _self.confirmPassword : confirmPassword // ignore: cast_nullable_to_non_nullable
 as String,profileImage: freezed == profileImage ? _self.profileImage : profileImage // ignore: cast_nullable_to_non_nullable
-as String?,isPasswordObscured: null == isPasswordObscured ? _self.isPasswordObscured : isPasswordObscured // ignore: cast_nullable_to_non_nullable
+as String?,imageUploadStatus: null == imageUploadStatus ? _self.imageUploadStatus : imageUploadStatus // ignore: cast_nullable_to_non_nullable
+as ExceptionStatus,isPasswordObscured: null == isPasswordObscured ? _self.isPasswordObscured : isPasswordObscured // ignore: cast_nullable_to_non_nullable
 as bool,isConfirmPasswordObscured: null == isConfirmPasswordObscured ? _self.isConfirmPasswordObscured : isConfirmPasswordObscured // ignore: cast_nullable_to_non_nullable
-as bool,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as bool,formStatus: null == formStatus ? _self.formStatus : formStatus // ignore: cast_nullable_to_non_nullable
 as ExceptionStatus,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
@@ -790,10 +791,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String fullName,  String mobileNumber,  String password,  String confirmPassword,  String? profileImage,  bool isPasswordObscured,  bool isConfirmPasswordObscured,  ExceptionStatus status,  String? errorMessage)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String fullName,  String email,  String password,  String confirmPassword,  String? profileImage,  ExceptionStatus imageUploadStatus,  bool isPasswordObscured,  bool isConfirmPasswordObscured,  ExceptionStatus formStatus,  String? errorMessage)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateAccountState() when $default != null:
-return $default(_that.fullName,_that.mobileNumber,_that.password,_that.confirmPassword,_that.profileImage,_that.isPasswordObscured,_that.isConfirmPasswordObscured,_that.status,_that.errorMessage);case _:
+return $default(_that.fullName,_that.email,_that.password,_that.confirmPassword,_that.profileImage,_that.imageUploadStatus,_that.isPasswordObscured,_that.isConfirmPasswordObscured,_that.formStatus,_that.errorMessage);case _:
   return orElse();
 
 }
@@ -811,10 +812,10 @@ return $default(_that.fullName,_that.mobileNumber,_that.password,_that.confirmPa
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String fullName,  String mobileNumber,  String password,  String confirmPassword,  String? profileImage,  bool isPasswordObscured,  bool isConfirmPasswordObscured,  ExceptionStatus status,  String? errorMessage)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String fullName,  String email,  String password,  String confirmPassword,  String? profileImage,  ExceptionStatus imageUploadStatus,  bool isPasswordObscured,  bool isConfirmPasswordObscured,  ExceptionStatus formStatus,  String? errorMessage)  $default,) {final _that = this;
 switch (_that) {
 case _CreateAccountState():
-return $default(_that.fullName,_that.mobileNumber,_that.password,_that.confirmPassword,_that.profileImage,_that.isPasswordObscured,_that.isConfirmPasswordObscured,_that.status,_that.errorMessage);case _:
+return $default(_that.fullName,_that.email,_that.password,_that.confirmPassword,_that.profileImage,_that.imageUploadStatus,_that.isPasswordObscured,_that.isConfirmPasswordObscured,_that.formStatus,_that.errorMessage);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -831,10 +832,10 @@ return $default(_that.fullName,_that.mobileNumber,_that.password,_that.confirmPa
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String fullName,  String mobileNumber,  String password,  String confirmPassword,  String? profileImage,  bool isPasswordObscured,  bool isConfirmPasswordObscured,  ExceptionStatus status,  String? errorMessage)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String fullName,  String email,  String password,  String confirmPassword,  String? profileImage,  ExceptionStatus imageUploadStatus,  bool isPasswordObscured,  bool isConfirmPasswordObscured,  ExceptionStatus formStatus,  String? errorMessage)?  $default,) {final _that = this;
 switch (_that) {
 case _CreateAccountState() when $default != null:
-return $default(_that.fullName,_that.mobileNumber,_that.password,_that.confirmPassword,_that.profileImage,_that.isPasswordObscured,_that.isConfirmPasswordObscured,_that.status,_that.errorMessage);case _:
+return $default(_that.fullName,_that.email,_that.password,_that.confirmPassword,_that.profileImage,_that.imageUploadStatus,_that.isPasswordObscured,_that.isConfirmPasswordObscured,_that.formStatus,_that.errorMessage);case _:
   return null;
 
 }
@@ -846,17 +847,18 @@ return $default(_that.fullName,_that.mobileNumber,_that.password,_that.confirmPa
 
 
 class _CreateAccountState implements CreateAccountState {
-  const _CreateAccountState({this.fullName = '', this.mobileNumber = '', this.password = '', this.confirmPassword = '', this.profileImage, this.isPasswordObscured = true, this.isConfirmPasswordObscured = true, this.status = ExceptionStatus.initail, this.errorMessage});
+  const _CreateAccountState({this.fullName = '', this.email = '', this.password = '', this.confirmPassword = '', this.profileImage, this.imageUploadStatus = ExceptionStatus.initail, this.isPasswordObscured = true, this.isConfirmPasswordObscured = true, this.formStatus = ExceptionStatus.initail, this.errorMessage});
   
 
 @override@JsonKey() final  String fullName;
-@override@JsonKey() final  String mobileNumber;
+@override@JsonKey() final  String email;
 @override@JsonKey() final  String password;
 @override@JsonKey() final  String confirmPassword;
 @override final  String? profileImage;
+@override@JsonKey() final  ExceptionStatus imageUploadStatus;
 @override@JsonKey() final  bool isPasswordObscured;
 @override@JsonKey() final  bool isConfirmPasswordObscured;
-@override@JsonKey() final  ExceptionStatus status;
+@override@JsonKey() final  ExceptionStatus formStatus;
 @override final  String? errorMessage;
 
 /// Create a copy of CreateAccountState
@@ -869,16 +871,16 @@ _$CreateAccountStateCopyWith<_CreateAccountState> get copyWith => __$CreateAccou
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateAccountState&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.mobileNumber, mobileNumber) || other.mobileNumber == mobileNumber)&&(identical(other.password, password) || other.password == password)&&(identical(other.confirmPassword, confirmPassword) || other.confirmPassword == confirmPassword)&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.isPasswordObscured, isPasswordObscured) || other.isPasswordObscured == isPasswordObscured)&&(identical(other.isConfirmPasswordObscured, isConfirmPasswordObscured) || other.isConfirmPasswordObscured == isConfirmPasswordObscured)&&(identical(other.status, status) || other.status == status)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateAccountState&&(identical(other.fullName, fullName) || other.fullName == fullName)&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.confirmPassword, confirmPassword) || other.confirmPassword == confirmPassword)&&(identical(other.profileImage, profileImage) || other.profileImage == profileImage)&&(identical(other.imageUploadStatus, imageUploadStatus) || other.imageUploadStatus == imageUploadStatus)&&(identical(other.isPasswordObscured, isPasswordObscured) || other.isPasswordObscured == isPasswordObscured)&&(identical(other.isConfirmPasswordObscured, isConfirmPasswordObscured) || other.isConfirmPasswordObscured == isConfirmPasswordObscured)&&(identical(other.formStatus, formStatus) || other.formStatus == formStatus)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,fullName,mobileNumber,password,confirmPassword,profileImage,isPasswordObscured,isConfirmPasswordObscured,status,errorMessage);
+int get hashCode => Object.hash(runtimeType,fullName,email,password,confirmPassword,profileImage,imageUploadStatus,isPasswordObscured,isConfirmPasswordObscured,formStatus,errorMessage);
 
 @override
 String toString() {
-  return 'CreateAccountState(fullName: $fullName, mobileNumber: $mobileNumber, password: $password, confirmPassword: $confirmPassword, profileImage: $profileImage, isPasswordObscured: $isPasswordObscured, isConfirmPasswordObscured: $isConfirmPasswordObscured, status: $status, errorMessage: $errorMessage)';
+  return 'CreateAccountState(fullName: $fullName, email: $email, password: $password, confirmPassword: $confirmPassword, profileImage: $profileImage, imageUploadStatus: $imageUploadStatus, isPasswordObscured: $isPasswordObscured, isConfirmPasswordObscured: $isConfirmPasswordObscured, formStatus: $formStatus, errorMessage: $errorMessage)';
 }
 
 
@@ -889,7 +891,7 @@ abstract mixin class _$CreateAccountStateCopyWith<$Res> implements $CreateAccoun
   factory _$CreateAccountStateCopyWith(_CreateAccountState value, $Res Function(_CreateAccountState) _then) = __$CreateAccountStateCopyWithImpl;
 @override @useResult
 $Res call({
- String fullName, String mobileNumber, String password, String confirmPassword, String? profileImage, bool isPasswordObscured, bool isConfirmPasswordObscured, ExceptionStatus status, String? errorMessage
+ String fullName, String email, String password, String confirmPassword, String? profileImage, ExceptionStatus imageUploadStatus, bool isPasswordObscured, bool isConfirmPasswordObscured, ExceptionStatus formStatus, String? errorMessage
 });
 
 
@@ -906,16 +908,17 @@ class __$CreateAccountStateCopyWithImpl<$Res>
 
 /// Create a copy of CreateAccountState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? fullName = null,Object? mobileNumber = null,Object? password = null,Object? confirmPassword = null,Object? profileImage = freezed,Object? isPasswordObscured = null,Object? isConfirmPasswordObscured = null,Object? status = null,Object? errorMessage = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? fullName = null,Object? email = null,Object? password = null,Object? confirmPassword = null,Object? profileImage = freezed,Object? imageUploadStatus = null,Object? isPasswordObscured = null,Object? isConfirmPasswordObscured = null,Object? formStatus = null,Object? errorMessage = freezed,}) {
   return _then(_CreateAccountState(
 fullName: null == fullName ? _self.fullName : fullName // ignore: cast_nullable_to_non_nullable
-as String,mobileNumber: null == mobileNumber ? _self.mobileNumber : mobileNumber // ignore: cast_nullable_to_non_nullable
+as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
 as String,confirmPassword: null == confirmPassword ? _self.confirmPassword : confirmPassword // ignore: cast_nullable_to_non_nullable
 as String,profileImage: freezed == profileImage ? _self.profileImage : profileImage // ignore: cast_nullable_to_non_nullable
-as String?,isPasswordObscured: null == isPasswordObscured ? _self.isPasswordObscured : isPasswordObscured // ignore: cast_nullable_to_non_nullable
+as String?,imageUploadStatus: null == imageUploadStatus ? _self.imageUploadStatus : imageUploadStatus // ignore: cast_nullable_to_non_nullable
+as ExceptionStatus,isPasswordObscured: null == isPasswordObscured ? _self.isPasswordObscured : isPasswordObscured // ignore: cast_nullable_to_non_nullable
 as bool,isConfirmPasswordObscured: null == isConfirmPasswordObscured ? _self.isConfirmPasswordObscured : isConfirmPasswordObscured // ignore: cast_nullable_to_non_nullable
-as bool,status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as bool,formStatus: null == formStatus ? _self.formStatus : formStatus // ignore: cast_nullable_to_non_nullable
 as ExceptionStatus,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String?,
   ));

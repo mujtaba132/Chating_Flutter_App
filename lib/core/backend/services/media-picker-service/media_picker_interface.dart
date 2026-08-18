@@ -1,5 +1,7 @@
-abstract interface class MediaPickerPlatform {
+import 'dart:io';
 
-       Future<void> pickImageFromGallery();   
+abstract interface class MediaPickerService {
+
+       Future<File?> pickImageFromGallery();   
 
 }

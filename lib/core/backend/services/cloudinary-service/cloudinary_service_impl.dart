@@ -16,6 +16,8 @@ class CloudinaryServiceImpl implements CloudinaryService{
               resourceType: CloudinaryResourceType.Image
               );
 
+              print(cloudinaryfile);
+
           return  _cloudinary.uploadFile(cloudinaryfile);
 
   }

@@ -1,12 +1,10 @@
-
-import 'package:chat_app/features/auth/data/repository/user_repository_impl.dart';
-
 import '../entities/user_entity.dart';
+import '../repository/user_repository_interface.dart';
 
 class RegisterUseCase {
       
-        final UserRepositoryImpl _userRepositoryImpl;
-        RegisterUseCase(this._userRepositoryImpl);
+        final UserRepository _userRepository;
+        RegisterUseCase(this._userRepository);
 
         Future<UserEntity> call({
           required String userName,
@@ -15,7 +13,7 @@ class RegisterUseCase {
           required String imageUrl
         }){
              
-             return _userRepositoryImpl.register(userName,email, password,imageUrl);
+             return _userRepository.register(userName,email, password,imageUrl);
         }
 
 }

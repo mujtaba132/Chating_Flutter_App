@@ -12,9 +12,9 @@ class CreateAccountEvent with _$CreateAccountEvent {
     required String fullName,
   }) = SetFullName;
 
-  const factory CreateAccountEvent.setMobileNumber({
-    required String mobileNumber,
-  }) = SetMobileNumber;
+  const factory CreateAccountEvent.setEmail({
+    required String email,
+  }) = SetEmail; 
 
   const factory CreateAccountEvent.setPassword({
     required String password,

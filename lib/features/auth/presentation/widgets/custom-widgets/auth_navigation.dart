@@ -5,10 +5,11 @@ import '../../../../../core/config/theme/app_text_styles.dart';
 
 class AuthNavigation extends StatelessWidget {
 
-  const AuthNavigation({super.key,required this.text,required this.clickableText});
+  const AuthNavigation({super.key,required this.text,required this.clickableText,required this.onClick});
 
   final String text;
   final String clickableText;
+  final VoidCallback onClick;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class AuthNavigation extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            // Navigate to login
+                               onClick();
                           },
                           child: Text(
                             clickableText,

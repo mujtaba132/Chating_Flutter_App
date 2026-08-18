@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'package:chat_app/core/backend/services/firebase_service/cloud_messages/cloud_messaging_platform.dart';
-import 'package:chat_app/core/backend/services/firebase_service/cloud_messages/notification_navigation.dart';
-import 'package:chat_app/core/backend/services/firebase_service/cloud_messages/notification_service.dart';
+import 'package:chat_app/core/backend/services/firebase-service/cloud_messages/cloud_messaging_platform.dart';
+import 'package:chat_app/core/backend/services/firebase-service/cloud_messages/notification_navigation.dart';
+import 'package:chat_app/core/backend/services/firebase-service/cloud_messages/notification_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 

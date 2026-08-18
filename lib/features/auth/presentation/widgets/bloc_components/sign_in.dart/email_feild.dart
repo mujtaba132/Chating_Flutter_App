@@ -2,33 +2,35 @@ import 'package:chat_app/core/config/theme/app_dimensions.dart';
 import 'package:chat_app/core/helper/extensions/theme/app_theme_context.dart';
 import 'package:chat_app/core/helper/utlils/validators/form_validation.dart';
 import 'package:chat_app/core/ui/chat_text_feild.dart';
+import 'package:chat_app/features/auth/presentation/bloc/login/bloc/login_bloc.dart';
+import 'package:chat_app/features/auth/presentation/bloc/login/state/login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../bloc/login/event/login_event.dart';
 
-import '../../../bloc/create-account/create_account_bloc.dart';
-
-class FullNameFeild extends StatelessWidget {
-  const FullNameFeild({super.key});
+class LoginEmailFeild extends StatelessWidget {
+  const LoginEmailFeild({super.key});
 
   @override
   Widget build(BuildContext context) {
     final colors = context.chatTheme;
-    return BlocBuilder<CreateAccountBloc, CreateAccountState>(
-      buildWhen: (previous, current) => previous.fullName!=current.fullName,
+    return BlocBuilder<LoginBloc, LoginState>(
+      buildWhen: (previous, current) => previous.email != current.email,
+
       builder: (context, state) {
-          final createAccountBloc = context.read<CreateAccountBloc>();
+        final loginBloc = context.read<LoginBloc>();
+
         return CustomTextField(
           textInputAction: TextInputAction.next,
-          keyboardType: TextInputType.name,
-          hintText: 'Enter your full name',
+          hintText: 'abc@gmail.com',
           prefixIcon: Icon(
-            Icons.person_outline_rounded,
+            Icons.mail_outlined,
             color: colors.textTertiary,
             size: AppDimensions.iconMedium,
           ),
-          validator:AppValidators.fullName,
-          onChanged: (newName){
-                  createAccountBloc.add(CreateAccountEvent.setFullName(fullName: newName));
+          validator: AppValidators.email,
+          onChanged: (newEmail) {
+                  loginBloc.add(LoginEvent.setEmail(email: newEmail));
           },
         );
       },

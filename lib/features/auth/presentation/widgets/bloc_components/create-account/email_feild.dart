@@ -7,28 +7,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../bloc/create-account/create_account_bloc.dart';
 
-class FullNameFeild extends StatelessWidget {
-  const FullNameFeild({super.key});
+class EmailFeild extends StatelessWidget {
+  const EmailFeild({super.key});
 
   @override
   Widget build(BuildContext context) {
     final colors = context.chatTheme;
     return BlocBuilder<CreateAccountBloc, CreateAccountState>(
-      buildWhen: (previous, current) => previous.fullName!=current.fullName,
+      buildWhen: (previous, current) => previous.email!=current.email,
       builder: (context, state) {
-          final createAccountBloc = context.read<CreateAccountBloc>();
+        final createAccountBloc = context.read<CreateAccountBloc>();
+
         return CustomTextField(
           textInputAction: TextInputAction.next,
-          keyboardType: TextInputType.name,
-          hintText: 'Enter your full name',
+          hintText: 'umar@gmail.com',
           prefixIcon: Icon(
-            Icons.person_outline_rounded,
+            Icons.mail_outlined,
             color: colors.textTertiary,
             size: AppDimensions.iconMedium,
           ),
-          validator:AppValidators.fullName,
-          onChanged: (newName){
-                  createAccountBloc.add(CreateAccountEvent.setFullName(fullName: newName));
+          validator: AppValidators.email,
+          onChanged: (newEmail){
+               createAccountBloc.add(CreateAccountEvent.setEmail(email: newEmail));
           },
         );
       },

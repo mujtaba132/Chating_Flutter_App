@@ -1,9 +1,12 @@
-import 'package:chat_app/core/backend/services/firebase_service/cloud_messages/cloud_messaging.dart';
-import 'package:chat_app/core/backend/services/firebase_service/cloud_messages/notification_service.dart';
+import 'package:chat_app/core/backend/services/firebase-service/cloud_messages/cloud_messaging.dart';
+import 'package:chat_app/core/backend/services/firebase-service/cloud_messages/notification_service.dart';
 import 'package:chat_app/core/config/theme/theme-mode/app_theme.dart';
+import 'package:chat_app/core/helper/messenger/app_messenger.dart';
 import 'package:chat_app/dependencies/service-loader/injection.dart';
-import 'package:chat_app/features/auth/presentation/pages/create_account.dart';
 import 'package:chat_app/firebase_options.dart';
+import 'package:chat_app/routes/route.dart';
+import 'package:chat_app/routes/route_service.dart';
+import 'package:chat_app/routes/routes_name.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -58,12 +61,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
+      scaffoldMessengerKey: scaffoldMessengerKey,
+
+      initialRoute: RoutesName.createAccountPage,
+      onGenerateRoute: AppRoute.generateRoutes,
+      navigatorKey: RouteService.navigatorState,
+
       title: 'Chat App',
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: ThemeMode.system,
-      home: CreateAccountScreen(),
+
     );
   }
 }
+
+
 

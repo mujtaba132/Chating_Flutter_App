@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../../core/backend/services/firebase_service/firebase_authentication/firebase_authentication_service.dart';
+import '../../../../core/backend/services/firebase-service/firebase_authentication/firebase_authentication_service.dart';
 
 class AuthDataSource {
      
