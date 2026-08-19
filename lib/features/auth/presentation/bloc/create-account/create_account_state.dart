@@ -4,16 +4,17 @@ part of 'create_account_bloc.dart';
 abstract class CreateAccountState with _$CreateAccountState {
   const factory CreateAccountState({
     @Default('') String fullName,
-    @Default('') String mobileNumber,
+    @Default('') String email,
     @Default('') String password,
     @Default('') String confirmPassword,
 
     String? profileImage,
+    @Default(ExceptionStatus.initail) ExceptionStatus imageUploadStatus,
 
     @Default(true) bool isPasswordObscured,
     @Default(true)  bool isConfirmPasswordObscured,
 
-    @Default(ExceptionStatus.initail) ExceptionStatus status,
+    @Default(ExceptionStatus.initail) ExceptionStatus formStatus,
     String? errorMessage,
 
   }) = _CreateAccountState;

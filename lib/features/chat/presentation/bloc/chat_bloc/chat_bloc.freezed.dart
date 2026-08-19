@@ -12,11 +12,17 @@ part of 'chat_bloc.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$ChatEvent {
+mixin _$ChatEvent implements DiagnosticableTreeMixin {
 
 
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ChatEvent'))
+    ;
+}
 
 @override
 bool operator ==(Object other) {
@@ -28,7 +34,7 @@ bool operator ==(Object other) {
 int get hashCode => runtimeType.hashCode;
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'ChatEvent()';
 }
 
@@ -55,11 +61,12 @@ extension ChatEventPatterns on ChatEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Started value)?  started,TResult Function( LoadMessages value)?  onLoadChat,TResult Function( AddMessage value)?  addNewMessage,TResult Function( SetMessage value)?  setNewMessage,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Started value)?  started,TResult Function( Intailization value)?  initailize,TResult Function( LoadMessages value)?  onLoadChat,TResult Function( AddMessage value)?  addNewMessage,TResult Function( SetMessage value)?  setNewMessage,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Started() when started != null:
-return started(_that);case LoadMessages() when onLoadChat != null:
+return started(_that);case Intailization() when initailize != null:
+return initailize(_that);case LoadMessages() when onLoadChat != null:
 return onLoadChat(_that);case AddMessage() when addNewMessage != null:
 return addNewMessage(_that);case SetMessage() when setNewMessage != null:
 return setNewMessage(_that);case _:
@@ -80,11 +87,12 @@ return setNewMessage(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Started value)  started,required TResult Function( LoadMessages value)  onLoadChat,required TResult Function( AddMessage value)  addNewMessage,required TResult Function( SetMessage value)  setNewMessage,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Started value)  started,required TResult Function( Intailization value)  initailize,required TResult Function( LoadMessages value)  onLoadChat,required TResult Function( AddMessage value)  addNewMessage,required TResult Function( SetMessage value)  setNewMessage,}){
 final _that = this;
 switch (_that) {
 case _Started():
-return started(_that);case LoadMessages():
+return started(_that);case Intailization():
+return initailize(_that);case LoadMessages():
 return onLoadChat(_that);case AddMessage():
 return addNewMessage(_that);case SetMessage():
 return setNewMessage(_that);case _:
@@ -104,11 +112,12 @@ return setNewMessage(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Started value)?  started,TResult? Function( LoadMessages value)?  onLoadChat,TResult? Function( AddMessage value)?  addNewMessage,TResult? Function( SetMessage value)?  setNewMessage,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Started value)?  started,TResult? Function( Intailization value)?  initailize,TResult? Function( LoadMessages value)?  onLoadChat,TResult? Function( AddMessage value)?  addNewMessage,TResult? Function( SetMessage value)?  setNewMessage,}){
 final _that = this;
 switch (_that) {
 case _Started() when started != null:
-return started(_that);case LoadMessages() when onLoadChat != null:
+return started(_that);case Intailization() when initailize != null:
+return initailize(_that);case LoadMessages() when onLoadChat != null:
 return onLoadChat(_that);case AddMessage() when addNewMessage != null:
 return addNewMessage(_that);case SetMessage() when setNewMessage != null:
 return setNewMessage(_that);case _:
@@ -128,10 +137,11 @@ return setNewMessage(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function()?  onLoadChat,TResult Function()?  addNewMessage,TResult Function( String newMessage)?  setNewMessage,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function( UserEntity receiver)?  initailize,TResult Function()?  onLoadChat,TResult Function()?  addNewMessage,TResult Function( String newMessage)?  setNewMessage,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Started() when started != null:
-return started();case LoadMessages() when onLoadChat != null:
+return started();case Intailization() when initailize != null:
+return initailize(_that.receiver);case LoadMessages() when onLoadChat != null:
 return onLoadChat();case AddMessage() when addNewMessage != null:
 return addNewMessage();case SetMessage() when setNewMessage != null:
 return setNewMessage(_that.newMessage);case _:
@@ -152,10 +162,11 @@ return setNewMessage(_that.newMessage);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function()  onLoadChat,required TResult Function()  addNewMessage,required TResult Function( String newMessage)  setNewMessage,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function( UserEntity receiver)  initailize,required TResult Function()  onLoadChat,required TResult Function()  addNewMessage,required TResult Function( String newMessage)  setNewMessage,}) {final _that = this;
 switch (_that) {
 case _Started():
-return started();case LoadMessages():
+return started();case Intailization():
+return initailize(_that.receiver);case LoadMessages():
 return onLoadChat();case AddMessage():
 return addNewMessage();case SetMessage():
 return setNewMessage(_that.newMessage);case _:
@@ -175,10 +186,11 @@ return setNewMessage(_that.newMessage);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function()?  onLoadChat,TResult? Function()?  addNewMessage,TResult? Function( String newMessage)?  setNewMessage,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function( UserEntity receiver)?  initailize,TResult? Function()?  onLoadChat,TResult? Function()?  addNewMessage,TResult? Function( String newMessage)?  setNewMessage,}) {final _that = this;
 switch (_that) {
 case _Started() when started != null:
-return started();case LoadMessages() when onLoadChat != null:
+return started();case Intailization() when initailize != null:
+return initailize(_that.receiver);case LoadMessages() when onLoadChat != null:
 return onLoadChat();case AddMessage() when addNewMessage != null:
 return addNewMessage();case SetMessage() when setNewMessage != null:
 return setNewMessage(_that.newMessage);case _:
@@ -192,7 +204,7 @@ return setNewMessage(_that.newMessage);case _:
 /// @nodoc
 
 
-class _Started implements ChatEvent {
+class _Started with DiagnosticableTreeMixin implements ChatEvent {
   const _Started();
   
 
@@ -200,6 +212,12 @@ class _Started implements ChatEvent {
 
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ChatEvent.started'))
+    ;
+}
 
 @override
 bool operator ==(Object other) {
@@ -211,7 +229,7 @@ bool operator ==(Object other) {
 int get hashCode => runtimeType.hashCode;
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'ChatEvent.started()';
 }
 
@@ -224,7 +242,79 @@ String toString() {
 /// @nodoc
 
 
-class LoadMessages implements ChatEvent {
+class Intailization with DiagnosticableTreeMixin implements ChatEvent {
+  const Intailization({required this.receiver});
+  
+
+ final  UserEntity receiver;
+
+/// Create a copy of ChatEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$IntailizationCopyWith<Intailization> get copyWith => _$IntailizationCopyWithImpl<Intailization>(this, _$identity);
+
+
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ChatEvent.initailize'))
+    ..add(DiagnosticsProperty('receiver', receiver));
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Intailization&&(identical(other.receiver, receiver) || other.receiver == receiver));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,receiver);
+
+@override
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'ChatEvent.initailize(receiver: $receiver)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $IntailizationCopyWith<$Res> implements $ChatEventCopyWith<$Res> {
+  factory $IntailizationCopyWith(Intailization value, $Res Function(Intailization) _then) = _$IntailizationCopyWithImpl;
+@useResult
+$Res call({
+ UserEntity receiver
+});
+
+
+
+
+}
+/// @nodoc
+class _$IntailizationCopyWithImpl<$Res>
+    implements $IntailizationCopyWith<$Res> {
+  _$IntailizationCopyWithImpl(this._self, this._then);
+
+  final Intailization _self;
+  final $Res Function(Intailization) _then;
+
+/// Create a copy of ChatEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? receiver = null,}) {
+  return _then(Intailization(
+receiver: null == receiver ? _self.receiver : receiver // ignore: cast_nullable_to_non_nullable
+as UserEntity,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class LoadMessages with DiagnosticableTreeMixin implements ChatEvent {
   const LoadMessages();
   
 
@@ -232,6 +322,12 @@ class LoadMessages implements ChatEvent {
 
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ChatEvent.onLoadChat'))
+    ;
+}
 
 @override
 bool operator ==(Object other) {
@@ -243,7 +339,7 @@ bool operator ==(Object other) {
 int get hashCode => runtimeType.hashCode;
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'ChatEvent.onLoadChat()';
 }
 
@@ -256,7 +352,7 @@ String toString() {
 /// @nodoc
 
 
-class AddMessage implements ChatEvent {
+class AddMessage with DiagnosticableTreeMixin implements ChatEvent {
   const AddMessage();
   
 
@@ -264,6 +360,12 @@ class AddMessage implements ChatEvent {
 
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ChatEvent.addNewMessage'))
+    ;
+}
 
 @override
 bool operator ==(Object other) {
@@ -275,7 +377,7 @@ bool operator ==(Object other) {
 int get hashCode => runtimeType.hashCode;
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'ChatEvent.addNewMessage()';
 }
 
@@ -288,7 +390,7 @@ String toString() {
 /// @nodoc
 
 
-class SetMessage implements ChatEvent {
+class SetMessage with DiagnosticableTreeMixin implements ChatEvent {
   const SetMessage({required this.newMessage});
   
 
@@ -301,6 +403,12 @@ class SetMessage implements ChatEvent {
 $SetMessageCopyWith<SetMessage> get copyWith => _$SetMessageCopyWithImpl<SetMessage>(this, _$identity);
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ChatEvent.setNewMessage'))
+    ..add(DiagnosticsProperty('newMessage', newMessage));
+}
 
 @override
 bool operator ==(Object other) {
@@ -312,7 +420,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,newMessage);
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'ChatEvent.setNewMessage(newMessage: $newMessage)';
 }
 
@@ -352,9 +460,9 @@ as String,
 }
 
 /// @nodoc
-mixin _$ChatState {
+mixin _$ChatState implements DiagnosticableTreeMixin {
 
- List<ChatMessage> get chatMessages; String get newMessage; ExceptionStatus get exception;
+ UserEntity? get sender; UserEntity? get receiver; String get newMessage; String get conversationId; List<ChatMessageEntity> get chatMessages; ExceptionStatus get exception;
 /// Create a copy of ChatState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -362,19 +470,25 @@ mixin _$ChatState {
 $ChatStateCopyWith<ChatState> get copyWith => _$ChatStateCopyWithImpl<ChatState>(this as ChatState, _$identity);
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ChatState'))
+    ..add(DiagnosticsProperty('sender', sender))..add(DiagnosticsProperty('receiver', receiver))..add(DiagnosticsProperty('newMessage', newMessage))..add(DiagnosticsProperty('conversationId', conversationId))..add(DiagnosticsProperty('chatMessages', chatMessages))..add(DiagnosticsProperty('exception', exception));
+}
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatState&&const DeepCollectionEquality().equals(other.chatMessages, chatMessages)&&(identical(other.newMessage, newMessage) || other.newMessage == newMessage)&&(identical(other.exception, exception) || other.exception == exception));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ChatState&&(identical(other.sender, sender) || other.sender == sender)&&(identical(other.receiver, receiver) || other.receiver == receiver)&&(identical(other.newMessage, newMessage) || other.newMessage == newMessage)&&(identical(other.conversationId, conversationId) || other.conversationId == conversationId)&&const DeepCollectionEquality().equals(other.chatMessages, chatMessages)&&(identical(other.exception, exception) || other.exception == exception));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(chatMessages),newMessage,exception);
+int get hashCode => Object.hash(runtimeType,sender,receiver,newMessage,conversationId,const DeepCollectionEquality().hash(chatMessages),exception);
 
 @override
-String toString() {
-  return 'ChatState(chatMessages: $chatMessages, newMessage: $newMessage, exception: $exception)';
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'ChatState(sender: $sender, receiver: $receiver, newMessage: $newMessage, conversationId: $conversationId, chatMessages: $chatMessages, exception: $exception)';
 }
 
 
@@ -385,7 +499,7 @@ abstract mixin class $ChatStateCopyWith<$Res>  {
   factory $ChatStateCopyWith(ChatState value, $Res Function(ChatState) _then) = _$ChatStateCopyWithImpl;
 @useResult
 $Res call({
- List<ChatMessage> chatMessages, String newMessage, ExceptionStatus exception
+ UserEntity? sender, UserEntity? receiver, String newMessage, String conversationId, List<ChatMessageEntity> chatMessages, ExceptionStatus exception
 });
 
 
@@ -402,11 +516,14 @@ class _$ChatStateCopyWithImpl<$Res>
 
 /// Create a copy of ChatState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? chatMessages = null,Object? newMessage = null,Object? exception = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? sender = freezed,Object? receiver = freezed,Object? newMessage = null,Object? conversationId = null,Object? chatMessages = null,Object? exception = null,}) {
   return _then(_self.copyWith(
-chatMessages: null == chatMessages ? _self.chatMessages : chatMessages // ignore: cast_nullable_to_non_nullable
-as List<ChatMessage>,newMessage: null == newMessage ? _self.newMessage : newMessage // ignore: cast_nullable_to_non_nullable
-as String,exception: null == exception ? _self.exception : exception // ignore: cast_nullable_to_non_nullable
+sender: freezed == sender ? _self.sender : sender // ignore: cast_nullable_to_non_nullable
+as UserEntity?,receiver: freezed == receiver ? _self.receiver : receiver // ignore: cast_nullable_to_non_nullable
+as UserEntity?,newMessage: null == newMessage ? _self.newMessage : newMessage // ignore: cast_nullable_to_non_nullable
+as String,conversationId: null == conversationId ? _self.conversationId : conversationId // ignore: cast_nullable_to_non_nullable
+as String,chatMessages: null == chatMessages ? _self.chatMessages : chatMessages // ignore: cast_nullable_to_non_nullable
+as List<ChatMessageEntity>,exception: null == exception ? _self.exception : exception // ignore: cast_nullable_to_non_nullable
 as ExceptionStatus,
   ));
 }
@@ -492,10 +609,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<ChatMessage> chatMessages,  String newMessage,  ExceptionStatus exception)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( UserEntity? sender,  UserEntity? receiver,  String newMessage,  String conversationId,  List<ChatMessageEntity> chatMessages,  ExceptionStatus exception)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ChatState() when $default != null:
-return $default(_that.chatMessages,_that.newMessage,_that.exception);case _:
+return $default(_that.sender,_that.receiver,_that.newMessage,_that.conversationId,_that.chatMessages,_that.exception);case _:
   return orElse();
 
 }
@@ -513,10 +630,10 @@ return $default(_that.chatMessages,_that.newMessage,_that.exception);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<ChatMessage> chatMessages,  String newMessage,  ExceptionStatus exception)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( UserEntity? sender,  UserEntity? receiver,  String newMessage,  String conversationId,  List<ChatMessageEntity> chatMessages,  ExceptionStatus exception)  $default,) {final _that = this;
 switch (_that) {
 case _ChatState():
-return $default(_that.chatMessages,_that.newMessage,_that.exception);case _:
+return $default(_that.sender,_that.receiver,_that.newMessage,_that.conversationId,_that.chatMessages,_that.exception);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -533,10 +650,10 @@ return $default(_that.chatMessages,_that.newMessage,_that.exception);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<ChatMessage> chatMessages,  String newMessage,  ExceptionStatus exception)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( UserEntity? sender,  UserEntity? receiver,  String newMessage,  String conversationId,  List<ChatMessageEntity> chatMessages,  ExceptionStatus exception)?  $default,) {final _that = this;
 switch (_that) {
 case _ChatState() when $default != null:
-return $default(_that.chatMessages,_that.newMessage,_that.exception);case _:
+return $default(_that.sender,_that.receiver,_that.newMessage,_that.conversationId,_that.chatMessages,_that.exception);case _:
   return null;
 
 }
@@ -547,18 +664,21 @@ return $default(_that.chatMessages,_that.newMessage,_that.exception);case _:
 /// @nodoc
 
 
-class _ChatState implements ChatState {
-  const _ChatState({final  List<ChatMessage> chatMessages = const [], this.newMessage = '', this.exception = ExceptionStatus.initail}): _chatMessages = chatMessages;
+class _ChatState with DiagnosticableTreeMixin implements ChatState {
+   _ChatState({this.sender, this.receiver, this.newMessage = '', this.conversationId = '', final  List<ChatMessageEntity> chatMessages = const [], this.exception = ExceptionStatus.initail}): _chatMessages = chatMessages;
   
 
- final  List<ChatMessage> _chatMessages;
-@override@JsonKey() List<ChatMessage> get chatMessages {
+@override final  UserEntity? sender;
+@override final  UserEntity? receiver;
+@override@JsonKey() final  String newMessage;
+@override@JsonKey() final  String conversationId;
+ final  List<ChatMessageEntity> _chatMessages;
+@override@JsonKey() List<ChatMessageEntity> get chatMessages {
   if (_chatMessages is EqualUnmodifiableListView) return _chatMessages;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_chatMessages);
 }
 
-@override@JsonKey() final  String newMessage;
 @override@JsonKey() final  ExceptionStatus exception;
 
 /// Create a copy of ChatState
@@ -568,19 +688,25 @@ class _ChatState implements ChatState {
 _$ChatStateCopyWith<_ChatState> get copyWith => __$ChatStateCopyWithImpl<_ChatState>(this, _$identity);
 
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'ChatState'))
+    ..add(DiagnosticsProperty('sender', sender))..add(DiagnosticsProperty('receiver', receiver))..add(DiagnosticsProperty('newMessage', newMessage))..add(DiagnosticsProperty('conversationId', conversationId))..add(DiagnosticsProperty('chatMessages', chatMessages))..add(DiagnosticsProperty('exception', exception));
+}
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChatState&&const DeepCollectionEquality().equals(other._chatMessages, _chatMessages)&&(identical(other.newMessage, newMessage) || other.newMessage == newMessage)&&(identical(other.exception, exception) || other.exception == exception));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ChatState&&(identical(other.sender, sender) || other.sender == sender)&&(identical(other.receiver, receiver) || other.receiver == receiver)&&(identical(other.newMessage, newMessage) || other.newMessage == newMessage)&&(identical(other.conversationId, conversationId) || other.conversationId == conversationId)&&const DeepCollectionEquality().equals(other._chatMessages, _chatMessages)&&(identical(other.exception, exception) || other.exception == exception));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_chatMessages),newMessage,exception);
+int get hashCode => Object.hash(runtimeType,sender,receiver,newMessage,conversationId,const DeepCollectionEquality().hash(_chatMessages),exception);
 
 @override
-String toString() {
-  return 'ChatState(chatMessages: $chatMessages, newMessage: $newMessage, exception: $exception)';
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+  return 'ChatState(sender: $sender, receiver: $receiver, newMessage: $newMessage, conversationId: $conversationId, chatMessages: $chatMessages, exception: $exception)';
 }
 
 
@@ -591,7 +717,7 @@ abstract mixin class _$ChatStateCopyWith<$Res> implements $ChatStateCopyWith<$Re
   factory _$ChatStateCopyWith(_ChatState value, $Res Function(_ChatState) _then) = __$ChatStateCopyWithImpl;
 @override @useResult
 $Res call({
- List<ChatMessage> chatMessages, String newMessage, ExceptionStatus exception
+ UserEntity? sender, UserEntity? receiver, String newMessage, String conversationId, List<ChatMessageEntity> chatMessages, ExceptionStatus exception
 });
 
 
@@ -608,11 +734,14 @@ class __$ChatStateCopyWithImpl<$Res>
 
 /// Create a copy of ChatState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? chatMessages = null,Object? newMessage = null,Object? exception = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? sender = freezed,Object? receiver = freezed,Object? newMessage = null,Object? conversationId = null,Object? chatMessages = null,Object? exception = null,}) {
   return _then(_ChatState(
-chatMessages: null == chatMessages ? _self._chatMessages : chatMessages // ignore: cast_nullable_to_non_nullable
-as List<ChatMessage>,newMessage: null == newMessage ? _self.newMessage : newMessage // ignore: cast_nullable_to_non_nullable
-as String,exception: null == exception ? _self.exception : exception // ignore: cast_nullable_to_non_nullable
+sender: freezed == sender ? _self.sender : sender // ignore: cast_nullable_to_non_nullable
+as UserEntity?,receiver: freezed == receiver ? _self.receiver : receiver // ignore: cast_nullable_to_non_nullable
+as UserEntity?,newMessage: null == newMessage ? _self.newMessage : newMessage // ignore: cast_nullable_to_non_nullable
+as String,conversationId: null == conversationId ? _self.conversationId : conversationId // ignore: cast_nullable_to_non_nullable
+as String,chatMessages: null == chatMessages ? _self._chatMessages : chatMessages // ignore: cast_nullable_to_non_nullable
+as List<ChatMessageEntity>,exception: null == exception ? _self.exception : exception // ignore: cast_nullable_to_non_nullable
 as ExceptionStatus,
   ));
 }

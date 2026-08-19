@@ -1,14 +1,13 @@
-
-import 'package:chat_app/features/auth/data/repository/user_repository_impl.dart';
+import '../repository/user_repository_interface.dart';
 
 
 class LogoutUseCase {
       
-        final UserRepositoryImpl _userRepositoryImpl;
-        LogoutUseCase(this._userRepositoryImpl);
+        final UserRepository _userRepository;
+        LogoutUseCase(this._userRepository);
 
-        Future<void> call(){       
-             return _userRepositoryImpl.logout();
+        Future<void> call({required String userId}){       
+             return _userRepository.logout(userId);
         }
         
 }

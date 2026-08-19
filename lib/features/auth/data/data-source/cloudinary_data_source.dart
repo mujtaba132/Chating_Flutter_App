@@ -1,16 +1,16 @@
 import 'dart:io';
-import 'package:chat_app/core/backend/services/cloudinary-service/cloudinary_service_impl.dart';
 import 'package:cloudinary_public/cloudinary_public.dart';
+import '../../../../core/backend/services/cloudinary-service/cloudinary_service_interface.dart';
 
 class CloudinaryDataSource {
      
-     final CloudinaryServiceImpl _cloudinaryServiceImpl;
-     CloudinaryDataSource(this._cloudinaryServiceImpl);
+     final CloudinaryService _cloudinaryService;
+     CloudinaryDataSource(this._cloudinaryService);
 
 
      Future<CloudinaryResponse> uploadImageFile(File file){
             
-            return _cloudinaryServiceImpl.uploadImageToCloudinary(file);
+            return _cloudinaryService.uploadImageToCloudinary(file);
      }
 
      

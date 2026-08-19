@@ -9,16 +9,17 @@ class ChatSendLayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ChatBloc, ChatState>(
-      builder: (context, state) {
-        return Padding(
-          padding: const EdgeInsets.all(8),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-
-              //Chat text feild
-              Expanded(
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          //Chat text feild
+          BlocBuilder<ChatBloc, ChatState>(
+            buildWhen: (previous, current) =>
+                previous.newMessage != current.newMessage,
+            builder: (context, state) {
+              return Expanded(
                 child: CustomTextField(
                   controller: _messageController,
                   prefixIcon: IconButton(
@@ -31,12 +32,14 @@ class ChatSendLayer extends StatelessWidget {
                     );
                   },
                 ),
-              ),
+              );
+            },
+          ),
 
-              const SizedBox(width: 8),
+          const SizedBox(width: 8),
 
-              //Chat send btn
-              CircleAvatar(
+          //Chat send btn
+         CircleAvatar(
                 radius: 24,
                 child: IconButton(
                   onPressed: () {
@@ -46,13 +49,8 @@ class ChatSendLayer extends StatelessWidget {
                   icon: const Icon(Icons.send_rounded),
                 ),
               )
-           
-               
-              
-            ],
-          ),
-        );
-      },
+        ],
+      ),
     );
   }
 }
