@@ -1,8 +1,6 @@
-import 'package:chat_app/core/backend/services/firebase-service/cloud_messages/cloud_messaging.dart';
-import 'package:chat_app/core/backend/services/firebase-service/cloud_messages/notification_service.dart';
 import 'package:chat_app/core/config/theme/theme-mode/app_theme.dart';
 import 'package:chat_app/core/helper/messenger/app_messenger.dart';
-import 'package:chat_app/dependencies/service-loader/injection.dart';
+import 'package:chat_app/dependencies/service-loader/app_dependencies.dart';
 import 'package:chat_app/firebase_options.dart';
 import 'package:chat_app/routes/route.dart';
 import 'package:chat_app/routes/route_service.dart';
@@ -19,10 +17,9 @@ void main() async{
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  FirebaseMessaging.onBackgroundMessage((message) => _firebaseMessagingBackgroundHandler(message));
-  _intailizeCloudMessaging();
+  AppDependencies.attach();
 
-  _appDependencies();
+  FirebaseMessaging.onBackgroundMessage((message) => _firebaseMessagingBackgroundHandler(message));
 
   runApp(const MyApp());
 }
@@ -35,25 +32,6 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message)async{
       );
 }
 
-//Cloud Messages Intailization at Top Level     
-void _intailizeCloudMessaging(){
-
-  final notificationService = NotificationService();
-  final cloudMessaging = CloudMessaging(notificationService: notificationService);
-
-  cloudMessaging.initialize();
-
-}
-
-
-//Set up app level Dependencies
-void _appDependencies(){
-      
-      final serviceLoader = ServiceLoader();
-      serviceLoader.setUpDependencies();
-
-}
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -64,7 +42,7 @@ class MyApp extends StatelessWidget {
 
       scaffoldMessengerKey: scaffoldMessengerKey,
 
-      initialRoute: RoutesName.createAccountPage,
+      initialRoute: RoutesName.chatPage,
       onGenerateRoute: AppRoute.generateRoutes,
       navigatorKey: RouteService.navigatorState,
 

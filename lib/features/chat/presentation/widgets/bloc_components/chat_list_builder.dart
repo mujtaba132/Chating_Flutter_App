@@ -1,4 +1,5 @@
 import 'package:chat_app/features/chat/data/modal/message_model/message_model.dart';
+import 'package:chat_app/features/chat/domain/entities/chat_message_entity.dart';
 import 'package:chat_app/features/chat/presentation/bloc/chat_bloc/chat_bloc.dart';
 import 'package:chat_app/features/chat/presentation/widgets/message/message.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class ChatListBuilder extends StatelessWidget {
           child: ListView.builder(
             itemCount: state.chatMessages.length,
             itemBuilder: (context, index) {
-              ChatMessage message = state.chatMessages[index];
+              ChatMessageEntity message = state.chatMessages[index];
               return 
               chatMessageItem(
                 context, 

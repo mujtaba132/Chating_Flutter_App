@@ -34,6 +34,10 @@ class FirebaseAuthService {
      User? get currentUser => _firebaseAuth.currentUser;
 
 
+     //Get Current UserId
+     String get currentUserId => _firebaseAuth.currentUser!.uid;
+
+
     
     //Listen to User Auth Changes
     Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();

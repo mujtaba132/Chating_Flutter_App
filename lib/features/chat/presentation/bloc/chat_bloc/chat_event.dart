@@ -1,9 +1,13 @@
 part of 'chat_bloc.dart';
 
 @freezed
-class ChatEvent with _$ChatEvent {
+abstract class ChatEvent with _$ChatEvent {
 
   const factory ChatEvent.started() = _Started;
+
+  const factory ChatEvent.initailize({
+     required UserEntity receiver
+  }) = Intailization;
 
   const factory ChatEvent.onLoadChat() = LoadMessages;
 

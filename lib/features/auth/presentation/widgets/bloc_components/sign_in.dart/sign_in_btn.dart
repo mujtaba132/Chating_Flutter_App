@@ -3,7 +3,6 @@ import 'package:chat_app/core/helper/utlils/enum/enum.dart';
 import 'package:chat_app/core/ui/chat_app_btn.dart';
 import 'package:chat_app/features/auth/presentation/bloc/login/bloc/login_bloc.dart';
 import 'package:chat_app/features/auth/presentation/bloc/login/state/login_state.dart';
-import 'package:chat_app/routes/route.dart';
 import 'package:chat_app/routes/route_service.dart';
 import 'package:chat_app/routes/routes_name.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +26,7 @@ class LoginBtn extends StatelessWidget {
                    messenger.success('Login successfull');
                    RouteService.pushNamedAndRemoveUntil(
                     RoutesName.chatPage,
-                    (route) => false,
+                    (route) => false, 
                     );
               } 
               else if (state.loginstatus == ExceptionStatus.error){

@@ -1,10 +1,10 @@
-import 'package:chat_app/features/chat/data/modal/message_model/message_model.dart';
+import 'package:chat_app/features/chat/domain/entities/chat_message_entity.dart';
 import 'package:chat_app/features/chat/presentation/widgets/message/status.dart';
 import 'package:flutter/material.dart';
 
 Widget chatMessageItem(
   BuildContext context,
-  ChatMessage chat,
+  ChatMessageEntity chat,
 ) {
   final screenWidth = MediaQuery.sizeOf(context).width;
 

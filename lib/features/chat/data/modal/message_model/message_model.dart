@@ -1,4 +1,5 @@
 import 'package:chat_app/core/helper/utlils/enum/enum.dart';
+import 'package:chat_app/dependencies/service-loader/file_exports.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
 part 'message_model.freezed.dart';
@@ -22,6 +23,17 @@ abstract class ChatMessage with _$ChatMessage {
 
   factory ChatMessage.fromJson(Map<String, dynamic> json) =>
       _$ChatMessageFromJson(json);
+  
+  factory ChatMessage.fromFirebase(Map<String,dynamic> json){
+       return ChatMessage(
+        msgId: json['msgId'], 
+        isMe: json['isMe'] as bool, 
+        message: json['message'], 
+        senderId: json['senderId'], 
+        receiverId: json['receiverId'], 
+        timeStamp: (json["timeStamp"] as Timestamp).toDate()
+        );
+  }
 
   String get getMessageDate =>
       DateFormat('dd-MM-yyyy').format(timeStamp);

@@ -1,6 +1,6 @@
 abstract interface class CloudMessagingPlatform {
 
-      Future<void> initialize();
+      void initialize();
 
       Future<String>? getFCMToken();
 

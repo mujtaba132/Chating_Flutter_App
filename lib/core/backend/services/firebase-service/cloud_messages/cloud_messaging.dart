@@ -15,7 +15,7 @@ class CloudMessaging implements CloudMessagingPlatform{
   
 
   @override
-  Future<void> initialize() async{
+  void initialize(){
 
          _listentoForegroundMessages();
          _listentoBackgroundTaps();
@@ -62,7 +62,8 @@ class CloudMessaging implements CloudMessagingPlatform{
   void _listenTOFCMToken(){
        
         _firebaseMessaging.onTokenRefresh.listen((newToken){
-              print('Updated to store to refresh token in firestore Firebase');
+                
+
         });
   }
 

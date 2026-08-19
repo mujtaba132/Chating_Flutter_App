@@ -1,3 +1,5 @@
+import 'package:chat_app/dependencies/service-loader/injection.dart';
+import 'package:chat_app/features/auth/domain/entities/user_entity.dart';
 import 'package:chat_app/features/chat/presentation/bloc/chat_bloc/chat_bloc.dart';
 import 'package:chat_app/features/chat/presentation/widgets/bloc_components/chat_list_builder.dart';
 import 'package:chat_app/features/chat/presentation/widgets/bloc_components/chat_send_layer.dart';
@@ -14,12 +16,17 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   late ChatBloc _chatBloc;
   final TextEditingController messageController = TextEditingController();
+  final UserEntity receiver=UserEntity(
+    userName: 'Umar Mujtaba', 
+    email: 'omarmujtaba@gmail.com', 
+    fcmToken: 'YHT765QWR', 
+    currentUser: 'yehduddkkkuser2id');
   
 
   @override
   void initState() {
     super.initState();
-    _chatBloc = ChatBloc();
+    _chatBloc = getIt<ChatBloc>()..add(ChatEvent.initailize(receiver: receiver));
 
   }
 
@@ -33,7 +40,7 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: BlocProvider(
-      create: (context) => _chatBloc,
+      create: (context) => _chatBloc..add(ChatEvent.onLoadChat()),
         child: Scaffold(
           body: Padding(
             padding: const EdgeInsets.all(2),

@@ -6,8 +6,8 @@ class LogoutUseCase {
         final UserRepository _userRepository;
         LogoutUseCase(this._userRepository);
 
-        Future<void> call(){       
-             return _userRepository.logout();
+        Future<void> call({required String userId}){       
+             return _userRepository.logout(userId);
         }
         
 }
