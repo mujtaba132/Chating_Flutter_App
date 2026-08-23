@@ -1,37 +1,69 @@
 import 'package:chat_app/core/config/theme/theme-mode/app_theme.dart';
 import 'package:chat_app/core/helper/messenger/app_messenger.dart';
+import 'package:chat_app/core/helper/utlils/enum/enum.dart';
 import 'package:chat_app/dependencies/service-loader/app_dependencies.dart';
 import 'package:chat_app/firebase_options.dart';
 import 'package:chat_app/routes/route.dart';
 import 'package:chat_app/routes/route_service.dart';
 import 'package:chat_app/routes/routes_name.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
-void main() async{
-  
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(
+    RemoteMessage message,
+) async {
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+
+    print('🔥 BACKGROUND HANDLER STARTED');
+    print('FCM ID: ${message.messageId}');
+    print('DATA: ${message.data}');
+
+    final chatId = message.data['chatId'];
+    final messageId = message.data['messageId'];
+
+    print('chatId: $chatId');
+    print('messageId: $messageId');
+
+    if (chatId == null || messageId == null) {
+      print('❌ Missing chatId or messageId');
+      return;
+    }
+
+    await FirebaseFirestore.instance
+        .collection('chats')
+        .doc(chatId)
+        .collection('messages')
+        .doc(messageId)
+        .update({
+      'messageStatus': MessageStatus.delivered.name,
+    });
+
+    print('✅ FIRESTORE UPDATED SUCCESSFULLY');
+  } catch (e, stackTrace) {
+    print('❌ FIRESTORE UPDATE FAILED: $e');
+    print(stackTrace);
+  }
+}
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  // Register the actual top-level callback
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   AppDependencies.attach();
 
-  FirebaseMessaging.onBackgroundMessage((message) => _firebaseMessagingBackgroundHandler(message));
-
   runApp(const MyApp());
 }
-
-//Cloud Messages Background Handler
-@pragma('vm:entry-point')
-Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message)async{
-      await Firebase.initializeApp(
-         options: DefaultFirebaseOptions.currentPlatform,
-      );
-}
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -39,7 +71,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
       scaffoldMessengerKey: scaffoldMessengerKey,
 
       initialRoute: RoutesName.chatPage,
@@ -50,10 +81,6 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: ThemeMode.system,
-
     );
   }
 }
-
-
-

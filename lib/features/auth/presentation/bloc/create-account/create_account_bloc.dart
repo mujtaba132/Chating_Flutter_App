@@ -5,6 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:chat_app/core/helper/utlils/enum/enum.dart';
 import 'package:chat_app/features/auth/domain/use-cases/register_use_case.dart';
 import 'package:chat_app/features/auth/domain/use-cases/upload_image_use_case.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../domain/use-cases/pick_image_use_case.dart';
 
@@ -118,7 +119,7 @@ class CreateAccountBloc extends Bloc<CreateAccountEvent, CreateAccountState> {
         email: state.email,
         password: state.password,
         imageUrl: state.profileImage ?? '',
-        );
+        ).onError((error, stackTrace) => throw Exception(error),);
        
       emit(state.copyWith(
         formStatus: ExceptionStatus.success,
@@ -126,7 +127,14 @@ class CreateAccountBloc extends Bloc<CreateAccountEvent, CreateAccountState> {
         imageUploadStatus: ExceptionStatus.initail)
         );
         
-    } catch (e) {
+    } on TimeoutException {
+       emit(
+        state.copyWith(
+          formStatus: ExceptionStatus.error,
+          errorMessage: 'No internet connection found!',
+        ));
+    }
+    catch (e) {
       emit(
         state.copyWith(
           formStatus: ExceptionStatus.error,

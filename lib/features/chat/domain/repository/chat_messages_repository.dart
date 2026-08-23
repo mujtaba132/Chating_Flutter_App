@@ -8,8 +8,13 @@ abstract interface class ChatMessagesRepository {
   Future<UserEntity?> getSender();
 
   //snd new message to firebase
-  Future<void> sndMessage({required ChatMessage newMessage});
+  Future<void> sndMessage({
+    required ChatMessage newMessage,
+    required String chatId,
+    required Map<String, dynamic> lastMessage,
+  });
 
   //listen new messages from firebase
   Stream<List<ChatMessageEntity>> listenToChat({required String chatId});
+  
 }

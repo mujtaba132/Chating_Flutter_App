@@ -2,38 +2,69 @@ import 'package:chat_app/core/backend/services/firebase-service/cloud_firestore/
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CloudFirebaseServiceImpl implements CloudFirestoreService {
+
   final FirebaseFirestore _firebaseFirestore;
 
   CloudFirebaseServiceImpl({required this._firebaseFirestore});
 
+  
+  //Get single collection  ref
+  @override
+  CollectionReference<Map<String, dynamic>> getCollectionRef({
+    required String collection,
+  }) {
+    return _firebaseFirestore.collection(collection);
+  }
+
+  //Get  single doc ref
+  @override
+  DocumentReference<Map<String, dynamic>> getDocumentRef({
+    required String collection,
+    required String documentId,
+  }) {
+    return _firebaseFirestore.collection(collection).doc(documentId);
+  }
+
+  //Get nested collection refs
+  @override
+  CollectionReference<Map<String,dynamic>> getNestedCollectionRef({
+    required DocumentReference<Map<String,dynamic>> outterDocRefs,
+    required String innerCollection,
+  }) {
+    return outterDocRefs.collection(innerCollection);
+  }
+
+  //Get nested document refs
+  @override
+  DocumentReference<Map<String,dynamic>> getNestedDocumentRef({
+    required DocumentReference<Map<String,dynamic>> outterDocRefs,
+    required String innerCollection,
+    required String innerDocumentId,
+  }) {
+    return outterDocRefs.collection(innerCollection).doc(innerDocumentId);
+  }
+
   //Add data
   @override
   Future<void> addData({
-    required String collection,
+    required CollectionReference collectionRefs,
     required Map<String, dynamic> data,
   }) async {
-    await _firebaseFirestore.collection(collection).add(data);
+    await collectionRefs.add(data);
   }
 
   //Delete data
   @override
-  Future<void> deleteData({
-    required String collection,
-    required String documentId,
-  }) async {
-    await _firebaseFirestore.collection(collection).doc(documentId).delete();
+  Future<void> deleteData({required DocumentReference docRefs}) async {
+    await docRefs.delete();
   }
 
   //Get data
   @override
   Future<Map<String, dynamic>?> getData({
-    required String collection,
-    required String documentId,
+    required DocumentReference<Map<String, dynamic>> docRefs,
   }) async {
-    final snapshot = await _firebaseFirestore
-        .collection(collection)
-        .doc(documentId)
-        .get();
+    final snapshot = await docRefs.get();
 
     if (!snapshot.exists) {
       return null;
@@ -45,74 +76,47 @@ class CloudFirebaseServiceImpl implements CloudFirestoreService {
   //Set data
   @override
   Future<void> setData({
-    required String collection,
-    required String documentId,
+    required DocumentReference<Map<String, dynamic>> docRefs,
     required Map<String, dynamic> data,
     bool merge = true,
   }) async {
-    await _firebaseFirestore
-        .collection(collection)
-        .doc(documentId)
-        .set(data, SetOptions(merge: merge));
+    await docRefs.set(data, SetOptions(merge: merge));
   }
 
   //Update data
   @override
   Future<void> updateData({
-    required String collection,
-    required String documentId,
+    required DocumentReference<Map<String, dynamic>> docRefs,
     required Map<String, dynamic> data,
   }) async {
-    await _firebaseFirestore
-        .collection(collection)
-        .doc(documentId)
-        .update(data);
+    await docRefs.update(data);
   }
 
-  @override
-  Stream<List<Map<String, dynamic>>> watchCollection({
-    required String collection,
-  }) {
-    return _firebaseFirestore
-        .collection(collection)
-        .snapshots()
-        .map((snapshot) => snapshot.docs.map((doc) => doc.data()).toList());
-  }
-
+  //Listen the document to get the data at realtime
   @override
   Stream<Map<String, dynamic>?> watchDocument({
-    required String collection,
-    required String documentId,
+    required DocumentReference<Map<String, dynamic>> docRefs,
   }) {
-    return _firebaseFirestore
-        .collection(collection)
-        .doc(documentId)
-        .snapshots()
-        .map((snapshot) => snapshot.data());
+    return docRefs.snapshots().map((snapshot) => snapshot.data());
   }
 
+  //Listen the collection to get the data at realtime
   @override
-  Stream<List<Map<String, dynamic>>> watchNestedCollection({
-    required String outterCollection,
-    required String documentId,
-    required String innerCollection,
+  Stream<List<Map<String, dynamic>>> watchCollection({
+    required CollectionReference<Map<String, dynamic>> collectionRefs,
     String orderBy = '',
   }) {
     if (orderBy.isEmpty) {
-      return _firebaseFirestore
-          .collection(outterCollection)
-          .doc(documentId)
-          .collection(innerCollection)
-          .snapshots()
-          .map((snapshot) => snapshot.docs.map((doc) => doc.data()).toList());
+      return collectionRefs.snapshots().map(
+        (snapshot) => snapshot.docs.map((doc) => doc.data()).toList(),
+      );
     } else {
-      return _firebaseFirestore
-          .collection(outterCollection)
-          .doc(documentId)
-          .collection(innerCollection)
+      return collectionRefs
           .orderBy(orderBy)
           .snapshots()
           .map((snapshot) => snapshot.docs.map((doc) => doc.data()).toList());
     }
   }
+
+
 }

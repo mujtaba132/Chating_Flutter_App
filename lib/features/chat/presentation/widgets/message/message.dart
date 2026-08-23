@@ -5,12 +5,13 @@ import 'package:flutter/material.dart';
 Widget chatMessageItem(
   BuildContext context,
   ChatMessageEntity chat,
+  bool isMe
 ) {
   final screenWidth = MediaQuery.sizeOf(context).width;
 
   return Align(
     alignment:
-        chat.isMe ? Alignment.centerRight : Alignment.centerLeft,
+        isMe ? Alignment.centerRight : Alignment.centerLeft,
     child: Container(
       constraints: BoxConstraints(
         maxWidth: screenWidth * 0.78,
@@ -26,14 +27,14 @@ Widget chatMessageItem(
         6,
       ),
       decoration: BoxDecoration(
-        color: chat.isMe
+        color: isMe
             ? const Color(0xFFE7FFDB)
             : Colors.white,
         borderRadius: BorderRadius.only(
           topLeft: const Radius.circular(12),
           topRight: const Radius.circular(12),
-          bottomLeft: Radius.circular(chat.isMe ? 12 : 2),
-          bottomRight: Radius.circular(chat.isMe ? 2 : 12),
+          bottomLeft: Radius.circular(isMe ? 12 : 2),
+          bottomRight: Radius.circular(isMe ? 2 : 12),
         ),
       ),
       child: Column(
@@ -66,9 +67,9 @@ Widget chatMessageItem(
                 ),
               ),
 
-              if (chat.isMe) ...[
+              if (isMe) ...[
                 const SizedBox(width: 4),
-                     statusIcon(chat.messageStatus!),
+                     statusIcon(chat.messageStatus),
               ],
             ],
           ),

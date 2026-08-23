@@ -7,9 +7,15 @@ class SendMessageUseCase {
      SendMessageUseCase({required this._chatMessagesRepository});
 
      Future<void> call({
-        required ChatMessage newMessage
+        required ChatMessage newMessage,
+        required String chatId,
+        required Map<String,dynamic> lastMessage
      }){
-          return _chatMessagesRepository.sndMessage(newMessage: newMessage);   
+          return _chatMessagesRepository.sndMessage(
+            newMessage: newMessage,
+            chatId: chatId,
+            lastMessage: lastMessage
+            );   
      }  
 
 }
