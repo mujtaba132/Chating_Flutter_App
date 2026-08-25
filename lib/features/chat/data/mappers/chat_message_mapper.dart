@@ -12,7 +12,6 @@ extension ChatMessageMapper on ChatMessage{
               message: message, 
               receiverId: receiverId, 
               senderId: senderId, 
-              isMe: isMe, 
               timeStamp: timeStamp);
        }
        

@@ -1,3 +1,4 @@
+import 'package:chat_app/core/config/permissions/permission_services_impl.dart';
 import 'package:chat_app/dependencies/service-loader/file_exports.dart';
 import 'package:chat_app/features/chat/data/data-source/chat_data_source.dart';
 import 'package:chat_app/features/chat/data/repository/chat_message_repository_impl.dart';
@@ -18,12 +19,17 @@ final class ServiceLoader {
   final _firebaseAuth = FirebaseAuth.instance;
   final _firebaseFirestore = FirebaseFirestore.instance;
   final _notificationService = NotificationService();
+  final _permissionService = PermissionServices();
 
   //all app services
   void setUpAppServices() {
 
     //Notification Service 
     getIt.registerLazySingleton<CloudMessagingPlatform>(() => CloudMessaging(notificationService: _notificationService));
+
+
+    //Notification Permission
+    getIt.registerLazySingleton<PermissionServices>(() => _permissionService);
 
     //MediaPicker Service
     getIt.registerLazySingleton<MediaPickerService>(

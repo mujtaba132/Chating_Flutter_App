@@ -1,9 +1,9 @@
 abstract final class Collection {
        
-       static const String user = 'User';
+       static const String user = 'user';
 
-       static const String chats = 'Chats';
+       static const String chats = 'chats';
 
-       static const String messages = 'Messages';
+       static const String messages = 'messages';
        
 }
