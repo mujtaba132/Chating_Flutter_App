@@ -7,7 +7,6 @@ class ChatMessageEntity {
   final String receiverId;
   final String senderId;
   final MessageStatus messageStatus;
-  final bool isMe;
   final DateTime timeStamp;
 
   ChatMessageEntity({
@@ -16,7 +15,6 @@ class ChatMessageEntity {
     required this.receiverId,
     required this.senderId,
     required this.messageStatus,
-    required this.isMe,
     required this.timeStamp,
   });
 

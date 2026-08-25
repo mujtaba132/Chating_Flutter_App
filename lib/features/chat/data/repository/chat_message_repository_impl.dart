@@ -10,26 +10,35 @@ class ChatMessageRepositoryImpl implements ChatMessagesRepository {
   final ChatDataSource _chatDataSource;
 
   ChatMessageRepositoryImpl({required this._chatDataSource});
+  
 
+  //get sender 
   @override
-  Future<UserEntity?> getSender({
-       String? userId
-  })async{
-
-        final model = await _chatDataSource.getCurrentUser();
-        if(model == null) return null;
-        return model.toEntity();
+  Future<UserEntity?> getSender({String? userId}) async {
+    final model = await _chatDataSource.getCurrentUser();
+    if (model == null) return null;
+    return model.toEntity();
   }
 
+  //snd msg to user
   @override
-  Future<void> sndMessage({required ChatMessage newMessage}){
-     return _chatDataSource.sndNewMessage(data: newMessage.toJson());
+  Future<void> sndMessage({
+    required ChatMessage newMessage,
+    required String chatId,
+    required Map<String, dynamic> lastMessage,
+  }) {
+    return _chatDataSource.sndNewMessage(
+      message: newMessage.toFirebase(),
+      conversationId: chatId,
+      lastMessage: lastMessage,
+    );
   }
 
+  //listen to the chats
   @override
   Stream<List<ChatMessageEntity>> listenToChat({required String chatId}) {
     return _chatDataSource
-        .listenToChat(chatId: chatId, orderBy: 'timeStamp')
+        .listenToChat(conversationId: chatId, orderBy: 'timeStamp')
         .map(
           (messages) => messages.map((message) => message.toEntitiy()).toList(),
         );

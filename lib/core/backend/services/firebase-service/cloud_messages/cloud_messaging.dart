@@ -16,12 +16,12 @@ class CloudMessaging implements CloudMessagingPlatform{
 
   @override
   void initialize(){
-
+         
          _listentoForegroundMessages();
          _listentoBackgroundTaps();
          _listentoTerminatedTaps();
          _listenTOFCMToken();
-
+        
   }
 
   
